@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tilak_c0868747_MT</string>
+
+    <string name="value_price">%1$.2f $</string>
 </resources>
