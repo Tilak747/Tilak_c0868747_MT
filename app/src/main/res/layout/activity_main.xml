@@ -264,16 +264,14 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            style="@style/MyButton"
             android:id="@+id/btnAction"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/default_margin"
-            android:backgroundTint="@color/btn_tint"
             android:text="View Details"
-            android:textColor="@color/btn_text_color"
-            app:cornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

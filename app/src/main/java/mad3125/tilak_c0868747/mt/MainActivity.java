@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     int count = 0;
     Car selectedCar;
     DriverAge age;
+    ArrayList<String> options = new ArrayList<>();
+    private double totalPrice;
+    private double tax;
+    private double totalAmount;
 
     private static final double TAX = 0.13;
 
@@ -97,9 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 showMessage("Please choose the drivers age.");
                 return;
             }
-            Rent rent = new Rent(selectedCar,count,age,new ArrayList<>());
+            Rent rent = new Rent(selectedCar,count,age,options,totalAmount,tax,totalPrice);
             showMessage("Order has been placed for "+selectedCar.getName());
             Intent intent = new Intent(this,InfoActivity.class);
+            intent.putExtra("data",rent);
             startActivity(intent);
 
         });
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     private void calculatePrices(){
 
         int id  = binding.radioGroup.getCheckedRadioButtonId();
+
         if(id == -1){
             return;
         }
@@ -144,22 +150,27 @@ public class MainActivity extends AppCompatActivity {
                 cost += SENIOR;
                 break;
         }
+
+        options.clear();
         if(binding.checkGps.isChecked()){
+            options.add(binding.checkGps.getText().toString());
             cost += GPS;
         }
         if(binding.checkChildSeat.isChecked()){
+            options.add(binding.checkChildSeat.getText().toString());
             cost += CHILD_SEAT;
         }
         if(binding.checkMileage.isChecked()){
+            options.add(binding.checkMileage.getText().toString());
             cost += MILEAGE;
         }
 
-        double costForEntireTrip = cost * count;
-        double tax = costForEntireTrip * TAX;
-        double totalAmount = costForEntireTrip + tax;
+        totalAmount = cost * count;
+        tax = totalAmount * TAX;
+        totalPrice = totalAmount + tax;
 
-        binding.tvAmount.setText(getString(R.string.value_price,costForEntireTrip));
-        binding.tvTotal.setText(getString(R.string.value_price,totalAmount));
+        binding.tvAmount.setText(getString(R.string.value_price,totalAmount));
+        binding.tvTotal.setText(getString(R.string.value_price,totalPrice));
 
     }
 
