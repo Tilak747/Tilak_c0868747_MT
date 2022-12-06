@@ -1,8 +1,9 @@
 package mad3125.tilak_c0868747.mt;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Rent {
+public class Rent implements Serializable {
     private Car car;
     private int noOfDays;
     private DriverAge age;

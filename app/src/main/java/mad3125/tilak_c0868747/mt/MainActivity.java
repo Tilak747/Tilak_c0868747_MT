@@ -3,6 +3,7 @@ package mad3125.tilak_c0868747.mt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -98,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
             }
             Rent rent = new Rent(selectedCar,count,age,new ArrayList<>());
             showMessage("Order has been placed for "+selectedCar.getName());
+            Intent intent = new Intent(this,InfoActivity.class);
+            startActivity(intent);
 
         });
     }

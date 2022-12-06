@@ -1,8 +1,9 @@
 package mad3125.tilak_c0868747.mt;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Car {
+public class Car implements Serializable {
     private int id;
     private String name;
     private double price;
